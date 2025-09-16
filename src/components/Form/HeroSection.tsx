@@ -17,13 +17,22 @@ export const HeroSection = () => {
 }
 
 export const Section = styled.section`
-	margin-top: 1500px;
+	margin-top: 240px;
 	height: 1080px;
 	background: url('/Rectangle12.svg') center/cover no-repeat;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	position: relative;
+
+	@media (max-width: 1024px) {
+		height: auto;
+		margin-top: 120px;
+	}
+
+	@media (max-width: 768px) {
+		margin-top: 80px;
+	}
 `
 
 export const Overlay = styled.div`
@@ -34,6 +43,10 @@ export const Overlay = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+
+	@media (max-width: 1024px) {
+		padding: 80px 20px;
+	}
 `
 
 export const Content = styled.div`

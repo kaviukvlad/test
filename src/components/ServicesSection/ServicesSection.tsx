@@ -11,37 +11,19 @@ export const ServicesSection = () => {
 				<ServiceItem
 					number='01'
 					title='Design Project Development'
-					text='We create bespoke interiors that reflect your unique style and elevate your lifestyle.We create bespoke interiors that reflect your unique style and elevate your lifestyle.We create bespoke '
+					text='We create bespoke interiors that reflect your unique style and elevate your lifestyle.'
 					image='/Rectangle11.svg'
 				/>
 				<ServiceItem
 					number='02'
-					title='Design Project Development'
-					text='We create bespoke interiors that reflect your unique style and elevate your lifestyle.We create bespoke interiors that reflect your unique style and elevate your lifestyle.We create bespoke '
+					title='Architecture Planning'
+					text='Unique solutions that combine aesthetics with functionality.'
 					image='/Rectangle11.svg'
 				/>
 				<ServiceItem
 					number='03'
-					title='Design Project Development'
-					text='We create bespoke interiors that reflect your unique style and elevate your lifestyle.We create bespoke interiors that reflect your unique style and elevate your lifestyle.We create bespoke '
-					image='/Rectangle11.svg'
-				/>
-				<ServiceItem
-					number='04'
-					title='Design Project Development'
-					text='We create bespoke interiors that reflect your unique style and elevate your lifestyle.We create bespoke interiors that reflect your unique style and elevate your lifestyle.We create bespoke '
-					image='/Rectangle11.svg'
-				/>
-				<ServiceItem
-					number='05'
-					title='Design Project Development'
-					text='We create bespoke interiors that reflect your unique style and elevate your lifestyle.We create bespoke interiors that reflect your unique style and elevate your lifestyle.We create bespoke '
-					image='/Rectangle11.svg'
-				/>
-				<ServiceItem
-					number='06'
-					title='Design Project Development'
-					text='We create bespoke interiors that reflect your unique style and elevate your lifestyle.We create bespoke interiors that reflect your unique style and elevate your lifestyle.We create bespoke '
+					title='Detailing'
+					text='Attention to every element to create harmony in space.'
 					image='/Rectangle11.svg'
 				/>
 			</ServicesWrapper>
@@ -52,15 +34,28 @@ export const ServicesSection = () => {
 const Section = styled.section`
 	background: #000;
 	position: relative;
-	margin: 241px 96px 247px 176px;
+	margin: 200px 96px;
+
+	@media (max-width: 1200px) {
+		margin: 150px 60px;
+	}
+
+	@media (max-width: 768px) {
+		margin: 100px 20px;
+	}
 `
 
 const ServicesWrapper = styled.div`
-	position: absolute;
-	top: 227px;
-	right: 60px;
-	width: 1000px;
-
 	display: flex;
 	flex-direction: column;
+	gap: 60px;
+
+	width: 100%;
+	max-width: 1000px;
+	margin-left: auto;
+
+	@media (max-width: 1200px) {
+		gap: 40px;
+		margin: 0 auto;
+	}
 `

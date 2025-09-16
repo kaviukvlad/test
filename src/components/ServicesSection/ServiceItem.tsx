@@ -20,7 +20,12 @@ export const ServiceItem = ({
 	return (
 		<Wrapper>
 			<Row onClick={() => setOpen(!open)}>
-				<Number>{number}</Number>
+				<DesktopNumber>{number}</DesktopNumber>
+
+				<MobileTop>
+					<Number>{number}</Number>
+					<Toggle>{open ? '−' : '+'}</Toggle>
+				</MobileTop>
 
 				<TitleBlock>
 					<Title>{title}</Title>
@@ -55,7 +60,7 @@ export const ServiceItem = ({
 					)}
 				</AnimatePresence>
 
-				<Toggle>{open ? '−' : '+'}</Toggle>
+				<DesktopToggle>{open ? '−' : '+'}</DesktopToggle>
 			</Row>
 		</Wrapper>
 	)
@@ -64,8 +69,6 @@ export const ServiceItem = ({
 const Wrapper = styled.div`
 	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 	color: #fff;
-	margin: 0;
-	padding: 0;
 
 	&:last-child {
 		border-bottom: none;
@@ -77,8 +80,12 @@ const Row = styled.div`
 	align-items: stretch;
 	gap: 60px;
 	cursor: pointer;
-	margin: 0;
 	padding: 30px 0 60px 0;
+
+	@media (max-width: 900px) {
+		flex-direction: column;
+		gap: 20px;
+	}
 `
 
 const Number = styled.span`
@@ -86,7 +93,12 @@ const Number = styled.span`
 	font-family: Montserrat;
 	font-size: 20px;
 	font-weight: 300;
-	margin-top: 10px;
+`
+
+const DesktopNumber = styled(Number)`
+	@media (max-width: 900px) {
+		display: none;
+	}
 `
 
 const TitleBlock = styled.div`
@@ -104,22 +116,49 @@ const Title = styled.h3`
 	font-size: 52px;
 	font-weight: 500;
 	text-align: left;
+
+	@media (max-width: 900px) {
+		font-size: clamp(1.8rem, 5vw, 36px);
+	}
 `
 
 const Toggle = styled.span`
 	font-size: 28px;
 	font-weight: 400;
+	cursor: pointer;
+`
+
+const DesktopToggle = styled(Toggle)`
 	margin-left: auto;
 	margin-top: 10px;
+
+	@media (max-width: 900px) {
+		display: none;
+	}
+`
+
+const MobileTop = styled.div`
+	display: none;
+
+	@media (max-width: 900px) {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+	}
 `
 
 const MotionImageWrapper = styled(motion.div)`
 	overflow: hidden;
 	img {
 		width: 350px;
+		max-width: 100%;
 		border-radius: 12px;
-		box-shadow: 0 0 30px rgba(244, 201, 153, 0.6);
-		display: block;
+		border: 1px solid var(--light, #f4c999);
+
+		box-shadow:
+			-17px 13px 35px 0 rgba(244, 201, 153, 0.5) inset,
+			0 0 34.6px 4px rgba(244, 201, 153, 0.7);
 	}
 `
 

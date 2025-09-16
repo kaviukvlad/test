@@ -1,4 +1,3 @@
-import './App.css'
 import { HeroSection } from './components/Form/HeroSection'
 import { Portfolio } from './components/Portfolio/portfolio'
 import { ServicesSection } from './components/ServicesSection/ServicesSection'
@@ -11,12 +10,30 @@ function App() {
 	return (
 		<>
 			<Header />
-			<Hero />
-			<AboutUs />
-			<Portfolio />
-			<CardStages />
-			<ServicesSection />
-			<HeroSection />
+
+			<section id='home'>
+				<Hero />
+			</section>
+
+			<section id='about'>
+				<AboutUs />
+			</section>
+
+			<section id='portfolio'>
+				<Portfolio />
+			</section>
+
+			<section id='stages'>
+				<CardStages />
+			</section>
+
+			<section id='services'>
+				<ServicesSection />
+			</section>
+
+			<section id='contact'>
+				<HeroSection />
+			</section>
 		</>
 	)
 }

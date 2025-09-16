@@ -4,12 +4,46 @@ import styled from 'styled-components'
 
 const Section = styled.section`
 	background: #000;
-	padding: 110px 76px 251px 0;
+	padding: 110px 76px 200px 76px;
+
+	/* Masonry styles reset */
+	.masonry-grid {
+		display: flex;
+		margin-left: -24px; /* компенсує gutter */
+		width: auto;
+	}
+
+	.masonry-grid_column {
+		padding-left: 24px; /* gutter */
+		background-clip: padding-box;
+	}
+
+	@media (max-width: 1200px) {
+		padding: 80px 40px 150px 40px;
+
+		.masonry-grid {
+			margin-left: -16px;
+		}
+		.masonry-grid_column {
+			padding-left: 16px;
+		}
+	}
+
+	@media (max-width: 768px) {
+		padding: 60px 20px 100px 20px;
+
+		.masonry-grid {
+			margin-left: -12px;
+		}
+		.masonry-grid_column {
+			padding-left: 12px;
+		}
+	}
 `
 
 const Card = styled.div<{ img: string; tall?: boolean }>`
 	position: relative;
-	height: ${props => (props.tall ? '1080px' : '547px')};
+	aspect-ratio: ${props => (props.tall ? '3/4' : '16/9')};
 	border-radius: 12px;
 	overflow: hidden;
 	background: url(${props => props.img}) center/cover no-repeat;
@@ -38,6 +72,11 @@ const Card = styled.div<{ img: string; tall?: boolean }>`
 			-17px 13px 35px 0 rgba(244, 201, 153, 0.5) inset,
 			0 0 34.6px 4px rgba(244, 201, 153, 0.7);
 	}
+
+	/* 📱 На телефоні всі однакові */
+	@media (max-width: 768px) {
+		aspect-ratio: 16/16; /* однаковий формат */
+	}
 `
 
 const CardContent = styled.div`
@@ -45,29 +84,27 @@ const CardContent = styled.div`
 	z-index: 2;
 
 	h3 {
-		color: #fff;
-		font-family: Montserrat;
-		font-size: 52px;
+		font-family: Montserrat, sans-serif;
+		font-size: clamp(1.5rem, 3vw, 3.25rem);
 		font-weight: 500;
 		margin: 0;
 	}
 
 	p {
-		margin: 15px 0 0;
-		color: rgba(255, 255, 255, 0.5);
-		font-family: Montserrat;
-		font-size: 32px;
+		margin: 10px 0 0;
+		color: rgba(255, 255, 255, 0.7);
+		font-family: Montserrat, sans-serif;
+		font-size: clamp(1rem, 2vw, 2rem);
 		font-weight: 400;
 	}
 `
 
 const breakpointColumnsObj = {
 	default: 3,
-	1000: 2,
-	600: 1
+	1200: 2,
+	768: 1
 }
 
-// ====== Модалка ======
 const ModalOverlay = styled.div`
 	position: fixed;
 	inset: 0;
@@ -77,11 +114,12 @@ const ModalOverlay = styled.div`
 	justify-content: center;
 	align-items: center;
 	z-index: 999;
+	padding: 20px;
 `
 
 const ModalContent = styled.div`
 	position: relative;
-	width: 80%;
+	width: 100%;
 	max-width: 1000px;
 	aspect-ratio: 16/9;
 	background: #000;
@@ -143,9 +181,10 @@ export const CardPortfolio = () => {
 				>
 					<CardContent>
 						<h3>Project One</h3>
-						<p>youtube video</p>
+						<p>YouTube video</p>
 					</CardContent>
 				</Card>
+
 				<Card
 					img='/Rectangle5.svg'
 					tall
@@ -153,38 +192,45 @@ export const CardPortfolio = () => {
 				>
 					<CardContent>
 						<h3>Project Two</h3>
-						<p>local video</p>
+						<p>Local video</p>
 					</CardContent>
 				</Card>
+
 				<Card img='/Rectangle4.svg'>
 					<CardContent>
-						<h3>Project Three</h3> <p>project details</p>
+						<h3>Project Three</h3>
+						<p>Project details</p>
 					</CardContent>
 				</Card>
+
 				<Card
 					img='/Rectangle8.svg'
 					tall
 				>
 					<CardContent>
-						<h3>Project Four</h3> <p>project details</p>
+						<h3>Project Four</h3>
+						<p>Project details</p>
 					</CardContent>
 				</Card>
+
 				<Card img='/Rectangle7.svg'>
 					<CardContent>
-						<h3>Project Five</h3> <p>project details</p>
+						<h3>Project Five</h3>
+						<p>Project details</p>
 					</CardContent>
 				</Card>
+
 				<Card
 					img='/Rectangle9.svg'
 					tall
 				>
 					<CardContent>
-						<h3>Project Six</h3> <p>project details</p>
+						<h3>Project Six</h3>
+						<p>Project details</p>
 					</CardContent>
 				</Card>
 			</Masonry>
 
-			{/* Модальне вікно */}
 			{videoOpen && (
 				<ModalOverlay onClick={closeVideo}>
 					<ModalContent onClick={e => e.stopPropagation()}>

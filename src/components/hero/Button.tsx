@@ -5,58 +5,98 @@ const Section = styled.section`
 	justify-content: space-between;
 	align-items: center;
 	gap: 2rem;
+	margin: 200px 92px 400px 162px;
+
+	@media (max-width: 1024px) {
+		flex-direction: column;
+		text-align: center;
+		margin: 100px 40px 200px 40px;
+	}
+
+	@media (max-width: 768px) {
+		margin: 60px 20px 100px 20px;
+	}
 `
 
 const Text = styled.div`
 	p {
-		font-size: 1.375rem;
 		color: #fff;
-		font-family: 'Montserrat', sans-serif;
-		margin: 0;
-		padding: 200px 0 0 162px;
+		font-family: Montserrat;
+		font-size: 22px;
+		font-weight: 400;
+		line-height: normal;
+
+		@media (max-width: 768px) {
+			font-size: 18px;
+		}
 	}
 `
 
 const ButtonsWrapper = styled.div`
 	display: flex;
 	gap: 1.5rem;
-	padding: 248px 92px 0 0;
+
+	@media (max-width: 768px) {
+		flex-direction: column;
+		width: 100%;
+		align-items: center;
+	}
 `
 
 const ButtonBase = styled.button`
-	padding: 1.125rem 2rem;
-	font-size: 1.375rem;
-	border: none;
 	cursor: pointer;
-	transition: all 0.2s ease;
+	display: flex;
+	width: 318px;
+	height: 63px;
+	padding: 10px;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	flex-shrink: 0;
 	border-radius: 10px;
-`
+	border: 2px solid var(--light, #f4c999);
+	background: #b98b56;
+	box-shadow:
+		-17px 13px 35px 0 rgba(244, 201, 153, 0.5) inset,
+		0 0 34.6px 4px rgba(244, 201, 153, 0.7);
 
-// Перша кнопка
-const PrimaryButton = styled(ButtonBase)`
-	background-color: #b98b56;
-	color: #fff;
-	border: 1px solid #b98b56;
-	box-shadow: 0 0 20px #b98b56;
-
-	&:hover {
-		background: transparent;
-		color: #fff;
+	@media (max-width: 480px) {
+		width: 100%;
+		font-size: 18px;
 	}
 `
 
-// Друга кнопка
 const SecondaryButton = styled(ButtonBase)`
 	background: transparent;
+	display: flex;
+	width: 248px;
+	height: 63px;
+	padding: 10px;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	flex-shrink: 0;
+	border-radius: 10px;
+	border: 2px solid #fff;
 	color: #fff;
-	border: 1px solid #ffffff;
+	font-family: Montserrat;
+	font-size: 22px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
 
-	&:hover {
-		background: #b98b56;
-		box-shadow: 0 0 20px #b98b56;
-		border: 1px solid #b98b56;
-		color: #fff;
+	@media (max-width: 480px) {
+		width: 100%;
 	}
+`
+
+const PrimaryButton = styled(ButtonBase)`
+	color: #fff;
+	font-family: Montserrat;
+	font-size: 22px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
 `
 
 export const HeroButtons = () => {
@@ -64,9 +104,8 @@ export const HeroButtons = () => {
 		<Section>
 			<Text>
 				<p>
-					We create bespoke interiors that <br />
-					reflect your unique style and elevate <br />
-					your lifestyle.
+					We create bespoke interiors that <br /> reflect your unique style and
+					elevate <br /> your lifestyle.
 				</p>
 			</Text>
 			<ButtonsWrapper>

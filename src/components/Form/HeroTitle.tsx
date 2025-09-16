@@ -14,10 +14,10 @@ const Title = styled.h1`
 	color: #fff;
 	text-align: center;
 	font-family: Montserrat;
-	font-size: 130px;
 	font-style: normal;
 	font-weight: 500;
 	line-height: normal;
+	font-size: clamp(2.5rem, 6.5vw, 138px);
 
 	.highlight {
 		color: #b98b56;
